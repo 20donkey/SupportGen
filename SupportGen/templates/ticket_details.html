@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Ticket Details</h1>
+<p><strong>Title:</strong> {{ ticket.title }}</p>
+<p><strong>Status:</strong> {{ ticket.status }}</p>
+<p><strong>Description:</strong> {{ ticket.description }}</p>
+<a href="{{ url_for('ticket_list') }}" class="btn btn-secondary">Back</a>
+{% endblock %}

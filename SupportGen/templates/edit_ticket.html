@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ form_title }}</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ ticket.title | e }}" required>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="Open" {{ 'selected' if ticket.status=='Open' else '' }}>Open</option>
+            <option value="In Progress" {{ 'selected' if ticket.status=='In Progress' else '' }}>In Progress</option>
+            <option value="Resolved" {{ 'selected' if ticket.status=='Resolved' else '' }}>Resolved</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4"
+            required>{{ ticket.description | e }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+<a href="{{ url_for('ticket_list') }}" class="btn btn-secondary mt-3">Cancel</a>
+{% endblock %}
